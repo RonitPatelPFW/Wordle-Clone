@@ -4,6 +4,7 @@
   "description": "Wordle Game",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/RonitPatelPFW/Wordle-With-a-Twist/issues"
   },
-  "homepage": "https://github.com/RonitPatelPFW/Wordle-With-a-Twist#readme"
+  "homepage": "https://github.com/RonitPatelPFW/Wordle-With-a-Twist#readme",
+  "dependencies": {
+    "ejs": "3.1.9",
+    "express": "4.18.2",
+    "express-ejs-layouts": "2.5.1",
+    "nodemon": "3.0.2"
+  }
 }
