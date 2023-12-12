@@ -1,6 +1,6 @@
-const express = require('express');
-const expressLayouts = require('express-ejs-layouts');
-const cors = require('cors');
+const express = require('express'),
+    expressLayouts = require('express-ejs-layouts')
+    cors = require('cors')
 
 const app = express();
 const port = 8080;

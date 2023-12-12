@@ -28,8 +28,7 @@
         <div class="form-control"></div>
         <div class="form-control"></div>
     </div>
-    <form onsubmit="return final_answer()">
-        <div class='keyboard-row'>
+    <div class='keyboard-row'>
             <button type="button" class="btn btn-secondary" onclick="input('Q')">Q</button>
             <button type="button" class="btn btn-secondary" onclick="input('W')">W</button>
             <button type="button" class="btn btn-secondary" onclick="input('E')">E</button>
@@ -40,8 +39,8 @@
             <button type="button" class="btn btn-secondary" onclick="input('I')">I</button>
             <button type="button" class="btn btn-secondary" onclick="input('O')">O</button>
             <button type="button" class="btn btn-secondary" onclick="input('P')">P</button>
-        </div>
-        <div class='keyboard-row'>
+    </div>
+    <div class='keyboard-row'>
             <button type="button" class="btn btn-secondary" onclick="input('A')">A</button>
             <button type="button" class="btn btn-secondary" onclick="input('S')">S</button>
             <button type="button" class="btn btn-secondary" onclick="input('D')">D</button>
@@ -51,8 +50,8 @@
             <button type="button" class="btn btn-secondary" onclick="input('J')">J</button>
             <button type="button" class="btn btn-secondary" onclick="input('K')">K</button>
             <button type="button" class="btn btn-secondary" onclick="input('L')">L</button>
-        </div>
-        <div class='keyboard-row' >
+    </div>
+    <div class='keyboard-row' >
             <button type="button" class="btn btn-secondary" onclick="input('Z')">Z</button>
             <button type="button" class="btn btn-secondary" onclick="input('X')">X</button>
             <button type="button" class="btn btn-secondary" onclick="input('C')">C</button>
@@ -60,9 +59,8 @@
             <button type="button" class="btn btn-secondary" onclick="input('B')">B</button>
             <button type="button" class="btn btn-secondary" onclick="input('N')">N</button>
             <button type="button" class="btn btn-secondary" onclick="input('M')">M</button>
-        </div>
-        <div class="keyboard-row">
-            <button type="submit" class="btn btn-primary" id="enter">enter</button>
+    </div>
+    <div class="keyboard-row">
+            <button type="submit" class="btn btn-primary" id="enter" onclick="return final_answer()">enter</button>
             <button type="button" class="btn btn-danger" onclick="del()">delete</button>
-        </div>
-    </form>
+    </div>
