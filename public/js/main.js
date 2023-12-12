@@ -9,7 +9,8 @@ let letter = document.getElementsByClassName('guess-row')[rowcount].childNodes
 let count = 0
 let finalStr = ""
 
-document.addEventListener('keydown', (event) => {
+
+function keyInputEventListener(event) {
     if (event.keyCode >= 65 && event.keyCode <= 90) {
         key = event.key.toUpperCase()
         input(key)
@@ -23,13 +24,16 @@ document.addEventListener('keydown', (event) => {
     else if(event.key === "Backspace") {
         del()
     }
-  });
+}
+
+document.addEventListener('keydown', keyInputEventListener)
 
 function changeRow(rowcount) {
     len = document.getElementsByClassName('guess-row')[rowcount].childNodes.length
     letter = document.getElementsByClassName('guess-row')[rowcount].childNodes
     count = 0
     enter.disabled = true
+    finalStr = ""
 }
 
 function input(str) {
@@ -82,22 +86,28 @@ function final_answer() {
         },
         success: function(result){
             if(finalStr === result.solution) {
-                alert("YAY GOOD JOB")
-
+                changeRow(rowcount)
+                document.body.style.pointerEvents = "none";
+                document.removeEventListener('keydown', keyInputEventListener)
+                document.querySelector(".alert.alert-success").removeAttribute("hidden");
+                setTimeout(() => {
+                    document.querySelector(".alert.alert-success").style.display = "none";
+                }, 5000)
             }
             else{
-                alert("NO GOOD JOB")
-                rowcount++
-                if(rowcount === totalGuessRow) {
-                    alert("SOWWY")
-                    changeRow(rowcount - 1)
+                if(rowcount+1 === totalGuessRow) {
+                    changeRow(rowcount)
+                    document.body.style.pointerEvents = "none";
+                    document.removeEventListener('keydown', keyInputEventListener)
+                    document.querySelector(".alert.alert-danger").removeAttribute("hidden");
+                    setTimeout(() => {
+                        document.querySelector(".alert.alert-danger").style.display = "none";
+                    }, 5000)
                 }
                 else {
+                    rowcount++
                     changeRow(rowcount)
                 }
-                finalStr = ""
-                // console.log(finalStr)
-                // enter.disabled = true
             }
         },
         error: function(result){
