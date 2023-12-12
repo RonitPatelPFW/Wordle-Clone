@@ -1,6 +1,5 @@
 const enter = document.getElementById('enter')
 enter.disabled = true
-
 // let rowcount = 0
 
 const len = document.getElementsByClassName('guess-row')[0].childNodes.length
@@ -8,6 +7,22 @@ const letter = document.getElementsByClassName('guess-row')[0].childNodes
 
 let count = null
 let finalStr = ""
+
+document.addEventListener('keydown', (event) => {
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+        key = event.key.toUpperCase()
+        input(key)
+    }
+    else if(event.key === "Enter") {
+        if(enter.disabled === false) {
+            final_answer()
+        }
+    }
+    else if(event.key === "Backspace") {
+        del()
+    }
+  });
+
 
 function input(str) {
     for (i = 0; i < len; i++) {
@@ -70,3 +85,4 @@ function final_answer() {
     });
     return false
 }
+
