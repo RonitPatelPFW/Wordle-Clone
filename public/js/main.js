@@ -1,4 +1,4 @@
-const enter = document.getElementsByName('enter')[0]
+const enter = document.getElementById('enter')
 enter.disabled = true
 
 // let rowcount = 0
@@ -40,4 +40,33 @@ function del() {
         enter.disabled = true
         
     }
+}
+
+function final_answer() {
+    let dateObj = new Date();
+    let month = dateObj.getMonth() + 1 //months from 1-12
+    let day = dateObj.getDate();
+    let year = dateObj.getFullYear();
+    newdate = year + "-" + month + "-" + day;
+
+    $.ajax({
+        url: '/fetchdata',
+        method: 'GET',
+        data: {
+            date: newdate
+        },
+        success: function(result){
+            if(finalStr === result.solution) {
+                alert("YAY GOOD JOB")
+
+            }
+            else{
+                alert("NO GOOD JOB")
+            }
+        },
+        error: function(result){
+            console.log("error with ajax")       
+        }
+    });
+    return false
 }

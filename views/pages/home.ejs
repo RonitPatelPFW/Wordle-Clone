@@ -1,29 +1,3 @@
-<script>
-    function final_answer() {
-        let dateObj = new Date();
-        let month = dateObj.getMonth() + 1 //months from 1-12
-        let day = dateObj.getDate();
-        let year = dateObj.getFullYear();
-        newdate = year + "-" + month + "-" + day;
-
-        $.ajax({
-            url: '/fetchdata',
-            method: 'GET',
-            data: {
-                date: newdate
-            },
-            success: function(result){
-                console.log(result.solution)
-            },
-            error: function(result){
-                console.log("error with ajax")       
-            }
-        });
-}
-
-    
-</script>
-
 <h1>Welcome to Wordle with a Twist</h1>
     <%= answer %>
     <div class="guess-row">
@@ -54,7 +28,7 @@
         <div class="form-control"></div>
         <div class="form-control"></div>
     </div>
-    <form onclick="return final_answer()">
+    <form onsubmit="return final_answer()">
         <div class='keyboard-row'>
             <button type="button" class="btn btn-secondary" onclick="input('Q')">Q</button>
             <button type="button" class="btn btn-secondary" onclick="input('W')">W</button>
@@ -88,7 +62,7 @@
             <button type="button" class="btn btn-secondary" onclick="input('M')">M</button>
         </div>
         <div class="keyboard-row">
-            <button type="submit" class="btn btn-primary" name="enter">enter</button>
+            <button type="submit" class="btn btn-primary" id="enter">enter</button>
             <button type="button" class="btn btn-danger" onclick="del()">delete</button>
         </div>
     </form>
