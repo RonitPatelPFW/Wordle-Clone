@@ -8,7 +8,7 @@ let letter = document.getElementsByClassName('guess-row')[rowcount].childNodes
 
 let count = 0
 let finalStr = ""
-
+let WORDLE_ANSWER = ""
 
 function keyInputEventListener(event) {
     if (event.keyCode >= 65 && event.keyCode <= 90) {
@@ -70,8 +70,8 @@ function del() {
     }
 }
 
-function final_answer() {
 
+function getAnswer() {
     let dateObj = new Date();
     let month = dateObj.getMonth() + 1 //months from 1-12
     let day = dateObj.getDate();
@@ -85,35 +85,41 @@ function final_answer() {
             date: newdate
         },
         success: function(result){
-            if(finalStr === result.solution) {
-                changeRow(rowcount)
-                document.body.style.pointerEvents = "none";
-                document.removeEventListener('keydown', keyInputEventListener)
-                document.querySelector(".alert.alert-success").removeAttribute("hidden");
-                setTimeout(() => {
-                    document.querySelector(".alert.alert-success").style.display = "none";
-                }, 5000)
-            }
-            else{
-                if(rowcount+1 === totalGuessRow) {
-                    changeRow(rowcount)
-                    document.body.style.pointerEvents = "none";
-                    document.removeEventListener('keydown', keyInputEventListener)
-                    document.querySelector(".alert.alert-danger").removeAttribute("hidden");
-                    setTimeout(() => {
-                        document.querySelector(".alert.alert-danger").style.display = "none";
-                    }, 5000)
-                }
-                else {
-                    rowcount++
-                    changeRow(rowcount)
-                }
-            }
+            WORDLE_ANSWER = result.solution
+           
         },
         error: function(result){
             console.log("error with ajax")       
         }
     });
+}
+getAnswer()
+function final_answer() {
+    if(finalStr === WORDLE_ANSWER) {
+        changeRow(rowcount)
+        document.body.style.pointerEvents = "none";
+        document.removeEventListener('keydown', keyInputEventListener)
+        document.querySelector(".alert.alert-success").removeAttribute("hidden");
+        setTimeout(() => {
+            document.querySelector(".alert.alert-success").style.display = "none";
+        }, 3000)
+    }
+    else{
+        if(rowcount+1 === totalGuessRow) {
+            changeRow(rowcount)
+            document.body.style.pointerEvents = "none";
+            document.removeEventListener('keydown', keyInputEventListener)
+            document.querySelector(".alert.alert-danger").removeAttribute("hidden");
+            setTimeout(() => {
+                document.querySelector(".alert.alert-danger").style.display = "none";
+            }, 3000)
+        }
+        else {
+            rowcount++
+            changeRow(rowcount)
+        }
+    }
+   
     return false
 }
 
