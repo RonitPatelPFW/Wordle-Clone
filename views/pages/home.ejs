@@ -1,9 +1,9 @@
 <script>
     function final_answer() {
         let dateObj = new Date();
-        let month = dateObj.getUTCMonth() + 1; //months from 1-12
-        let day = dateObj.getUTCDate();
-        let year = dateObj.getUTCFullYear();
+        let month = dateObj.getMonth() + 1 //months from 1-12
+        let day = dateObj.getDate();
+        let year = dateObj.getFullYear();
         newdate = year + "-" + month + "-" + day;
 
         $.ajax({
@@ -13,7 +13,7 @@
                 date: newdate
             },
             success: function(result){
-                alert(result.solution)
+                console.log(result.solution)
             },
             error: function(result){
                 console.log("error with ajax")       
@@ -25,6 +25,7 @@
 </script>
 
 <h1>Welcome to Wordle with a Twist</h1>
+    <%= answer %>
     <div class="guess-row">
         <div class="form-control"></div>
         <div class="form-control"></div>

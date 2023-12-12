@@ -1,6 +1,7 @@
 const express = require('express'),
     router = express.Router(),
-    mainController = require('./controllers/main.controller')
+    mainController = require('./controllers/main.controller'),
+    fetchController = require('./controllers/fetch.controller')
 
 // export reroutes
 module.exports = router 
@@ -9,14 +10,4 @@ module.exports = router
 // main routes
 router.get('/', mainController.showHome)
 
-router.get('/fetchData', async (req, res) => {
-    try {
-      const response = await fetch(`https://www.nytimes.com/svc/wordle/v2/${req.query.date}.json`);
-      const data = await response.json();
-      res.json(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
-  
+router.get('/fetchdata', fetchController.GetData)
