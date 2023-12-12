@@ -1,11 +1,5 @@
 <h1>Welcome to Wordle with a Twist</h1>
-    <div class="guess-row">
-        <div class="form-control">A</div>
-        <div class="form-control">B</div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-    </div>
+    <%= answer %>
     <div class="guess-row">
         <div class="form-control"></div>
         <div class="form-control"></div>
@@ -27,39 +21,48 @@
         <div class="form-control"></div>
         <div class="form-control"></div>
     </div>
-    <div class='keyboard-row'>
-        <div class="btn btn-secondary">Q</div>
-        <div class="btn btn-secondary">W</div>
-        <div class="btn btn-secondary">E</div>
-        <div class="btn btn-secondary">R</div>
-        <div class="btn btn-secondary">T</div>
-        <div class="btn btn-secondary">Y</div>
-        <div class="btn btn-secondary">U</div>
-        <div class="btn btn-secondary">I</div>
-        <div class="btn btn-secondary">O</div>
-        <div class="btn btn-secondary">P</div>
+    <div class="guess-row">
+        <div class="form-control"></div>
+        <div class="form-control"></div>
+        <div class="form-control"></div>
+        <div class="form-control"></div>
+        <div class="form-control"></div>
     </div>
-    <div class='keyboard-row'>
-        <div class="btn btn-secondary">A</div>
-        <div class="btn btn-secondary">S</div>
-        <div class="btn btn-secondary">D</div>
-        <div class="btn btn-secondary">F</div>
-        <div class="btn btn-secondary">G</div>
-        <div class="btn btn-secondary">H</div>
-        <div class="btn btn-secondary">J</div>
-        <div class="btn btn-secondary">K</div>
-        <div class="btn btn-secondary">L</div>
-    </div>
-    <div class='keyboard-row' >
-        <div class="btn btn-secondary">Z</div>
-        <div class="btn btn-secondary">X</div>
-        <div class="btn btn-secondary">C</div>
-        <div class="btn btn-secondary">V</div>
-        <div class="btn btn-secondary">B</div>
-        <div class="btn btn-secondary">N</div>
-        <div class="btn btn-secondary">M</div>
-    </div>
-    <div class="keyboard-row">
-        <div class="btn btn-primary">enter</div>
-        <div class="btn btn-danger delete">delete</div>
-    </div>
+    <form onsubmit="return final_answer()">
+        <div class='keyboard-row'>
+            <button type="button" class="btn btn-secondary" onclick="input('Q')">Q</button>
+            <button type="button" class="btn btn-secondary" onclick="input('W')">W</button>
+            <button type="button" class="btn btn-secondary" onclick="input('E')">E</button>
+            <button type="button" class="btn btn-secondary" onclick="input('R')">R</button>
+            <button type="button" class="btn btn-secondary" onclick="input('T')">T</button>
+            <button type="button" class="btn btn-secondary" onclick="input('Y')">Y</button>
+            <button type="button" class="btn btn-secondary" onclick="input('U')">U</button>
+            <button type="button" class="btn btn-secondary" onclick="input('I')">I</button>
+            <button type="button" class="btn btn-secondary" onclick="input('O')">O</button>
+            <button type="button" class="btn btn-secondary" onclick="input('P')">P</button>
+        </div>
+        <div class='keyboard-row'>
+            <button type="button" class="btn btn-secondary" onclick="input('A')">A</button>
+            <button type="button" class="btn btn-secondary" onclick="input('S')">S</button>
+            <button type="button" class="btn btn-secondary" onclick="input('D')">D</button>
+            <button type="button" class="btn btn-secondary" onclick="input('F')">F</button>
+            <button type="button" class="btn btn-secondary" onclick="input('G')">G</button>
+            <button type="button" class="btn btn-secondary" onclick="input('H')">H</button>
+            <button type="button" class="btn btn-secondary" onclick="input('J')">J</button>
+            <button type="button" class="btn btn-secondary" onclick="input('K')">K</button>
+            <button type="button" class="btn btn-secondary" onclick="input('L')">L</button>
+        </div>
+        <div class='keyboard-row' >
+            <button type="button" class="btn btn-secondary" onclick="input('Z')">Z</button>
+            <button type="button" class="btn btn-secondary" onclick="input('X')">X</button>
+            <button type="button" class="btn btn-secondary" onclick="input('C')">C</button>
+            <button type="button" class="btn btn-secondary" onclick="input('V')">V</button>
+            <button type="button" class="btn btn-secondary" onclick="input('B')">B</button>
+            <button type="button" class="btn btn-secondary" onclick="input('N')">N</button>
+            <button type="button" class="btn btn-secondary" onclick="input('M')">M</button>
+        </div>
+        <div class="keyboard-row">
+            <button type="submit" class="btn btn-primary" id="enter">enter</button>
+            <button type="button" class="btn btn-danger" onclick="del()">delete</button>
+        </div>
+    </form>
