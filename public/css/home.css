@@ -16,14 +16,24 @@ h1 {
 .form-control {
     width: 65px;
     height: 65px;
-    background-color: grey;
-    padding-top: 15px;
+    background-color: black;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
     text-align: center;
     margin-bottom: 10px;
     margin-right: 5px;
+    color: white;
+    font-size: 50px;
 }
 
-.btn {
+.alert {
+    position: absolute;
+    z-index: 1;
+    top: 0%;
+}
+
+.btn-primary, .btn-secondary, .btn-danger {
     width: 60px;
     height: 60px;
     margin: 5px;
