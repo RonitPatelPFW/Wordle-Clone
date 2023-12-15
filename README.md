@@ -33,13 +33,13 @@ Welcome to the Wordle Clone! This is a simple word-guessing game inspired by the
 1. Clone the repository:
 
    ```bash
-   https://github.com/RonitPatelPFW/Wordle-With-a-Twist.git
+   https://github.com/RonitPatelPFW/Wordle-Clone.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd wordle-clone
+   cd Wordle-Clone
    ```
 
 3. Install dependencies:
