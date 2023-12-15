@@ -17,9 +17,9 @@ Welcome to the Wordle Clone! This is a simple word-guessing game inspired by the
 3. **Making a Guess:**
    - Enter a guess in the input field and submit.
    - The game will provide feedback after each guess:
-     - **Correct Letter and Position:** The letter is in the right place.
-     - **Correct Letter, Wrong Position:** The letter is in the word but not in the right place.
-     - **Incorrect Letter:** The letter is not in the word.
+     - **Correct Letter and Position (Green Color):** The letter is in the right place.
+     - **Correct Letter, Wrong Position (Yellow Color):** The letter is in the word but not in the right place.
+     - **Incorrect Letter (Grey Color):** The letter is not in the word.
 
 4. **Winning:**
    - If you guess the word within the allotted attempts, you win!
@@ -70,6 +70,6 @@ Welcome to the Wordle Clone! This is a simple word-guessing game inspired by the
 
 ## Acknowledgments
 
-This Wordle Clone was created with inspiration from the classic Wordle game. Feel free to contribute, report issues, or suggest improvements!
+This Wordle Clone was created with inspiration from the classic Wordle game. 
 
 Have fun playing the Wordle Clone! 🎉
