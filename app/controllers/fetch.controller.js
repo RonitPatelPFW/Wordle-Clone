@@ -1,5 +1,6 @@
 module.exports = {
     GetData: GetData,
+    SetDifficulty: SetDifficulty,
     SetDifficulty: SetDifficulty
 }
 

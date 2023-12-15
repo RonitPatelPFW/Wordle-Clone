@@ -38,6 +38,7 @@ function keyInputEventListener(event) {
 document.addEventListener('keydown', keyInputEventListener)
 
 
+
 function changeRow(rowcount) {
     len = document.getElementsByClassName('guess-row')[rowcount].childNodes.length
     letter = document.getElementsByClassName('guess-row')[rowcount].childNodes
@@ -47,6 +48,7 @@ function changeRow(rowcount) {
 }
 
 function input(str) {
+
 
     for (i = 0; i < len; i++) {
         if (letter[i].nodeName === "DIV") {
@@ -64,6 +66,7 @@ function input(str) {
 }
 
 function del() {
+   
     for (i = len - 1; i >= 0; i--) {
         if (letter[i].nodeName === "DIV") {
             if (letter[i].textContent !== "") {
@@ -76,7 +79,6 @@ function del() {
     }
     if (count != 5) {
         enter.disabled = true
-
     }
 }
 
@@ -94,10 +96,13 @@ function getAnswer() {
         data: {
             date: newdate
         },
+        
         success: function (result) {
             WORDLE_ANSWER = result.solution
 
+
         },
+        
         error: function (result) {
             console.log("error with ajax")
         }
@@ -137,7 +142,7 @@ function doStuff() {
             changeColor(finalStr[index].toUpperCase(), "grey", false)
         }
     } 
-}
+    } 
 
 function final_answer() {
     let pass = true
@@ -213,6 +218,7 @@ function final_answer() {
             changeRow(rowcount)
         }
     }
+
 
     return false
 }

@@ -17,5 +17,3 @@ router.post('/', fetchController.SetDifficulty)
 
 //cookie routes
 router.get('/cookie', cookieController.setCookie)
-
-
