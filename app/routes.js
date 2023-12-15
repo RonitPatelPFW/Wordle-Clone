@@ -11,3 +11,5 @@ module.exports = router
 router.get('/', mainController.showHome)
 
 router.get('/fetchdata', fetchController.GetData)
+
+router.post('/', fetchController.SetDifficulty)

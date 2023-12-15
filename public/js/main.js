@@ -2,7 +2,7 @@ const enter = document.getElementById('enter')
 enter.disabled = true
 
 let rowcount = 0
-let totalGuessRow  = document.getElementsByClassName('guess-row').length
+let totalGuessRow = document.getElementsByClassName('guess-row').length
 let len = document.getElementsByClassName('guess-row')[rowcount].childNodes.length
 let letter = document.getElementsByClassName('guess-row')[rowcount].childNodes
 
@@ -11,22 +11,28 @@ let finalStr = ""
 let WORDLE_ANSWER = ""
 
 function keyInputEventListener(event) {
-    if (event.keyCode >= 65 && event.keyCode <= 90) {
-        key = event.key.toUpperCase()
-        input(key)
-
-    }
-    else if(event.key === "Enter") {
-        if(enter.disabled === false) {
-            final_answer()
+    if($('#staticBackdrop').is(':visible')) {
+        document.removeEventListener('keydown', keyInputEventListener)
+    } else {
+        if (event.keyCode >= 65 && event.keyCode <= 90) {
+            key = event.key.toUpperCase()
+            input(key)
+    
+        }
+        else if (event.key === "Enter") {
+            if (enter.disabled === false) {
+                final_answer()
+            }
+        }
+        else if (event.key === "Backspace") {
+            del()
         }
     }
-    else if(event.key === "Backspace") {
-        del()
-    }
+    // document.addEventListener('keydown', keyInputEventListener)
 }
 
 document.addEventListener('keydown', keyInputEventListener)
+
 
 function changeRow(rowcount) {
     len = document.getElementsByClassName('guess-row')[rowcount].childNodes.length
@@ -37,10 +43,10 @@ function changeRow(rowcount) {
 }
 
 function input(str) {
-    
+
     for (i = 0; i < len; i++) {
-        if(letter[i].nodeName === "DIV") {
-            if(letter[i].textContent === "") {
+        if (letter[i].nodeName === "DIV") {
+            if (letter[i].textContent === "") {
                 letter[i].textContent = str
                 finalStr += letter[i].textContent.toLowerCase()
                 count++;
@@ -48,15 +54,15 @@ function input(str) {
             }
         }
     }
-    if(count == 5) {     
-        enter.disabled = false   
+    if (count == 5) {
+        enter.disabled = false
     }
 }
 
 function del() {
-    for (i = len-1; i >= 0; i--) {
-        if(letter[i].nodeName === "DIV") {
-            if(letter[i].textContent !== "") {
+    for (i = len - 1; i >= 0; i--) {
+        if (letter[i].nodeName === "DIV") {
+            if (letter[i].textContent !== "") {
                 letter[i].textContent = ""
                 count--;
                 finalStr = finalStr.substring(0, count).toLowerCase()
@@ -64,9 +70,9 @@ function del() {
             }
         }
     }
-    if(count != 5) {
+    if (count != 5) {
         enter.disabled = true
-        
+
     }
 }
 
@@ -84,93 +90,102 @@ function getAnswer() {
         data: {
             date: newdate
         },
-        success: function(result){
+        success: function (result) {
             WORDLE_ANSWER = result.solution
-           
+
         },
-        error: function(result){
-            console.log("error with ajax")       
+        error: function (result) {
+            console.log("error with ajax")
         }
     });
 }
 getAnswer()
 
-function changeColor(str, color) {
+function changeColor(str, color, bool) {
     for (i = 0; i < len; i++) {
-        if(letter[i].nodeName === "DIV") {
-            if(letter[i].textContent === str) {
+        if (letter[i].nodeName === "DIV") {
+            if ((letter[i].textContent === str) && (bool === true)) {
                 letter[i].style.backgroundColor = color;
-                // break
+                break
+            }
+            else if ((letter[i].textContent === str) && (bool === false)) {
+                letter[i].style.backgroundColor = color;
             }
         }
     }
 }
 
+function doStuff() {
+    for (let i = 0; i < WORDLE_ANSWER.length; i++) {
+        for (let j = 0; j < finalStr.length; j++) {
+            //check if letter at index are both same
+            if ((finalStr[j] === WORDLE_ANSWER[i]) && (i === j)) {
+                changeColor(finalStr[j].toUpperCase(), "green", true)
+            }
+            else if ((finalStr[j] === WORDLE_ANSWER[i])) {
+                changeColor(finalStr[j].toUpperCase(), "rgb(211, 184, 12)", true)
+            }
+
+        }
+    }
+    for (let index = 0; index < finalStr.length; index++) {
+        if (WORDLE_ANSWER.includes(finalStr[index]) === false) {
+            changeColor(finalStr[index].toUpperCase(), "grey", false)
+        }
+    } 
+}
+
 function final_answer() {
+    let pass = true
+    //  // Create an object to store character counts
+    //  const charCounts = {};
+
+    //  // Iterate through each character in the string
+    //  for (let char of finalStr) {
+    //      // Increment the count for the current character
+    //      charCounts[char] = (charCounts[char] || 0) + 1;
+    //  }
+    //    // Output the character counts
+    //  for (let char in charCounts) {
+    //      if(charCounts[char] > 1) {
+    //          $('.modal-body').html(`Please enter a valid word`);
+    //          $('#staticBackdrop').modal('show');
+    //          pass = false
+    //     }
+    // }
+
     //if user got answer
-    if(finalStr === WORDLE_ANSWER) {
+    if ((pass === true) && (finalStr === WORDLE_ANSWER)) {
         changeRow(rowcount)
+        console.log(document.cookie)
         document.body.style.pointerEvents = "none";
         document.removeEventListener('keydown', keyInputEventListener)
         for (i = 0; i < len; i++) {
-            if(letter[i].nodeName === "DIV") {
+            if (letter[i].nodeName === "DIV") {
                 letter[i].style.backgroundColor = "green";
             }
         }
-        
+
         $('.modal-body').html("You won!!");
-        $('#staticBackdrop').modal('show'); 
+        $('#staticBackdrop').modal('show');
     }
-    else{
+    else if (pass === true) {
         //if user has 0 attempts remaing
-        if(rowcount+1 === totalGuessRow) {
-            for (let i = 0; i < WORDLE_ANSWER.length; i++) {
-                for (let j = 0; j < finalStr.length; j++) {
-                    //check if letter at index are both same
-                    if((finalStr[j] === WORDLE_ANSWER[i]) && (i === j)) {                        
-                        changeColor(finalStr[j].toUpperCase(), "green")
-                    }
-                    else if((finalStr[j] === WORDLE_ANSWER[i])) {
-                        changeColor(finalStr[j].toUpperCase(), "rgb(211, 184, 12)")   
-                    }   
-                }     
-            }
-            for (let index = 0; index < finalStr.length; index++) {
-                console.log(finalStr[index])
-                    if(WORDLE_ANSWER.includes(finalStr[index]) === false) {
-                        changeColor(finalStr[index].toUpperCase(), "grey")   
-                    }
-            }
+        if (rowcount + 1 === totalGuessRow) {
+            doStuff()
             changeRow(rowcount)
             document.body.style.pointerEvents = "none";
             document.removeEventListener('keydown', keyInputEventListener)
             $('.modal-body').html(`Better Luck Next Time<br>Answer: ${WORDLE_ANSWER}`);
-            $('#staticBackdrop').modal('show'); 
+            $('#staticBackdrop').modal('show');
         }
         else {
             //still going
-            for (let i = 0; i < WORDLE_ANSWER.length; i++) {
-                for (let j = 0; j < finalStr.length; j++) {
-                    //check if letter at index are both same
-                    if((finalStr[j] === WORDLE_ANSWER[i]) && (i === j)) {                        
-                        changeColor(finalStr[j].toUpperCase(), "green")
-                    }
-                    else if((finalStr[j] === WORDLE_ANSWER[i])) {
-                        changeColor(finalStr[j].toUpperCase(), "rgb(211, 184, 12)")   
-                    }
-                    
-                }
-            }
-            for (let index = 0; index < finalStr.length; index++) {
-                console.log(finalStr[index])
-                    if(WORDLE_ANSWER.includes(finalStr[index]) === false) {
-                        changeColor(finalStr[index].toUpperCase(), "grey")   
-                    }
-            }
+            doStuff()
             rowcount++
             changeRow(rowcount)
         }
     }
-   
+
     return false
 }
