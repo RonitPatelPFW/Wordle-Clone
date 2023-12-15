@@ -1,50 +1,29 @@
-<h1>Welcome to Wordle with a Twist</h1>
-    <%= answer %>
-    <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<h1><%= mode %></h1>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Game Results</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Game Results</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+            </div>
         </div>
-        <div class="modal-body"></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
     </div>
-  </div>
-      
+</div>
+
+<% for (let i=0; i < numGuessRows; i++) { %>
     <div class="guess-row">
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
+        <% for (let j=0; j < numFormControls; j++) { %>
+            <div class="form-control"></div>
+            <% } %>
     </div>
-    <div class="guess-row">
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-    </div>
-    <div class="guess-row">
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-    </div>
-    <div class="guess-row">
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-        <div class="form-control"></div>
-    </div>
-    <div class='keyboard-row'>
+    <% } %>
+        <div class='keyboard-row'>
             <button type="button" class="btn btn-secondary" onclick="input('Q')">Q</button>
             <button type="button" class="btn btn-secondary" onclick="input('W')">W</button>
             <button type="button" class="btn btn-secondary" onclick="input('E')">E</button>
@@ -55,8 +34,8 @@
             <button type="button" class="btn btn-secondary" onclick="input('I')">I</button>
             <button type="button" class="btn btn-secondary" onclick="input('O')">O</button>
             <button type="button" class="btn btn-secondary" onclick="input('P')">P</button>
-    </div>
-    <div class='keyboard-row'>
+        </div>
+        <div class='keyboard-row'>
             <button type="button" class="btn btn-secondary" onclick="input('A')">A</button>
             <button type="button" class="btn btn-secondary" onclick="input('S')">S</button>
             <button type="button" class="btn btn-secondary" onclick="input('D')">D</button>
@@ -66,8 +45,8 @@
             <button type="button" class="btn btn-secondary" onclick="input('J')">J</button>
             <button type="button" class="btn btn-secondary" onclick="input('K')">K</button>
             <button type="button" class="btn btn-secondary" onclick="input('L')">L</button>
-    </div>
-    <div class='keyboard-row' >
+        </div>
+        <div class='keyboard-row'>
             <button type="button" class="btn btn-secondary" onclick="input('Z')">Z</button>
             <button type="button" class="btn btn-secondary" onclick="input('X')">X</button>
             <button type="button" class="btn btn-secondary" onclick="input('C')">C</button>
@@ -75,8 +54,8 @@
             <button type="button" class="btn btn-secondary" onclick="input('B')">B</button>
             <button type="button" class="btn btn-secondary" onclick="input('N')">N</button>
             <button type="button" class="btn btn-secondary" onclick="input('M')">M</button>
-    </div>
-    <div class="keyboard-row">
+        </div>
+        <div class="keyboard-row">
             <button type="submit" class="btn btn-primary" id="enter" onclick="return final_answer()">enter</button>
-            <button type="button" class="btn btn-danger" onclick="del()">delete</button>
-    </div>
+            <button type="button" class="btn btn-danger" onclick="del()">Delete</button>
+        </div>
