@@ -13,7 +13,21 @@ function generateUniqueUserId() {
 }
 
 async function setCookie(req, res) {
-   const newUserId = generateUniqueUserId()
+    const newUserId = generateUniqueUserId();
+
+    console.log("Existing Cookie Value:", req.cookies.userId);
+    
+    // Set the new value for the cookie
     res.cookie('userId', newUserId);
+    
+    console.log("Setting Cookie: ", newUserId);
+    
+    // Log the updated value before sending the response
+    console.log("Updated Cookie Value:", newUserId);
+    
+    // Send the response
+    res.send("Cookie updated.");
+    
+
 
 }

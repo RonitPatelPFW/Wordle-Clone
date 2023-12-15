@@ -14,7 +14,7 @@ module.exports = {
     showHome: (req, res) => {
         // Check if the user has a unique identifier cookie
         const newDate = generateUniqueUserId()
-        const userId = req.cookies.userId;
+        let userId = req.cookies.userId;
         console.log("UID: ", userId)
         console.log("Date: ", newDate)
         

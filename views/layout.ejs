@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle Clone</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -23,27 +19,13 @@
         <div class="navbar-header">
             <a href="/" class="navbar-brand title">Wordle Clone Game</a>
         </div>
-        <ul class="navbar-nav mr-auto">
-            <div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Difficulty
-                </button>
-                <form class="dropdown-menu" action="/" method="post">
-                    <button type="submit" class="dropdown-item" value='easy' name="selection">Easy (6 attempts)</button>
-                    <button type="submit" class="dropdown-item" value='medium' name="selection">Medium (4
-                        attempts)</button>
-                    <button type="submit" class="dropdown-item" value='hard' name="selection">Hard (2 attempts)</button>
-                </form>
-            </div>
-        </ul>
         <span class="navbar-brand copy">Copyright &copy; Ronit Patel (Fall 2023)</span>
     </div>
 </nav>
 <!-- main -->
 <main class="site-main">
     <div class="container">
-        <body onload="checkCookie()">
+        <body>
             <% if (user===true) { %>
                 <h1 class="font-weight-bold">You have already attempted Wordle! <br>Come Back Tomorrow</h1>
                 <div class="image">
@@ -59,19 +41,15 @@
                                 Difficulty
                             </button>
                             <form class="dropdown-menu" action="/" method="post">
-                                <button type="submit" class="dropdown-item" value='easy' name="selection">Easy (6
-                                    attempts)</button>
-                                <button type="submit" class="dropdown-item" value='medium' name="selection">Medium (4
-                                    attempts)</button>
-                                <button type="submit" class="dropdown-item" value='hard' name="selection">Hard (2
-                                    attempts)</button>
+                                <button type="submit" class="dropdown-item" value='easy' name="selection">Easy (6 attempts)</button>
+                                <button type="submit" class="dropdown-item" value='medium' name="selection">Medium (4 attempts)</button>
+                                <button type="submit" class="dropdown-item" value='hard' name="selection">Hard (2 attempts)</button>
                             </form>
                         </div>
                     </ul>
-                    <%- body %>
-                        <% } %>
+                    <%- body %> 
+                <% } %>
         </body>
-        <%- body %>
     </div>
 </main>
 <script src="js/main.js"></script>

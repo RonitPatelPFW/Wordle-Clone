@@ -12,10 +12,6 @@ body {
     color: white;
 }
 
-.site-footer, .navbar-header {
-    color: white;
-}
-
 h1 {
     text-align: center;
     color: white;
@@ -52,17 +48,6 @@ h1 {
     margin: 5px;
 }
 
-.btn-danger {
-    width: 75px;
-}
-
-.title {
-    margin-left: 10px;
-}
-
-.copy {
-    margin-left: 800px;
-}
 .btn-danger {
     width: 75px;
 }
