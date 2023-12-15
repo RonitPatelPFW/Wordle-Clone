@@ -1,5 +1,6 @@
 module.exports = {
-    GetData: GetData
+    GetData: GetData,
+    SetDifficulty: SetDifficulty
 }
 
 async function GetData(req, res) {
@@ -9,6 +10,29 @@ async function GetData(req, res) {
         res.json(data);
       } catch (error) {
         console.error('Error fetching data:', error);
-        res.render('pages/home', {answer: 'Internal Server Error' })
+       
       }
+}
+
+async function SetDifficulty(req, res) { 
+  try {
+    let rows = 0
+    let gameMode = ""
+    const diff = req.body.selection
+    if(diff === "easy") {
+      rows = 6
+      gameMode = "Easy"
+    }
+    else if(diff === "medium") {
+      rows = 4
+      gameMode = "Medium"
+    }
+    else {
+      rows = 2
+      gameMode = "Hard"
+    }
+    res.render('pages/home', {numGuessRows: rows, numFormControls: 5, mode: `${gameMode} Mode`, user:false });
+  } catch (error) {
+    console.log(error)
+  }
 }
