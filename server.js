@@ -2,13 +2,16 @@ const express = require('express'),
     expressLayouts = require('express-ejs-layouts')
     cors = require('cors'),
     bodyParser = require('body-parser'),
-    opn = require('opn'); // Import the 'opn' package
+    opn = require('opn');
+    cookieParser = require('cookie-parser');
 
 
 const app = express();
 const port = 8080;
 
 // use body parser to grab info from a form
+app.use(cookieParser());
+
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(cors());

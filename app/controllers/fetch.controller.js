@@ -1,5 +1,6 @@
 module.exports = {
     GetData: GetData,
+    SetDifficulty: SetDifficulty,
     SetDifficulty: SetDifficulty
 }
 
@@ -31,7 +32,7 @@ async function SetDifficulty(req, res) {
       rows = 2
       gameMode = "Hard"
     }
-    res.render('pages/home', {numGuessRows: rows, numFormControls: 5, mode: `${gameMode} Mode`});
+    res.render('pages/home', {numGuessRows: rows, numFormControls: 5, mode: `${gameMode} Mode`, user:false });
   } catch (error) {
     console.log(error)
   }

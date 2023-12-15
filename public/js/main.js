@@ -11,6 +11,10 @@ let finalStr = ""
 let WORDLE_ANSWER = ""
 
 function keyInputEventListener(event) {
+    console.log(event.key)
+    if((event.key === "Meta") || (event.key === "Control")) {
+        event.preventDefault()
+    }
     if($('#staticBackdrop').is(':visible')) {
         document.removeEventListener('keydown', keyInputEventListener)
     } else {
@@ -34,6 +38,7 @@ function keyInputEventListener(event) {
 document.addEventListener('keydown', keyInputEventListener)
 
 
+
 function changeRow(rowcount) {
     len = document.getElementsByClassName('guess-row')[rowcount].childNodes.length
     letter = document.getElementsByClassName('guess-row')[rowcount].childNodes
@@ -43,6 +48,7 @@ function changeRow(rowcount) {
 }
 
 function input(str) {
+
 
     for (i = 0; i < len; i++) {
         if (letter[i].nodeName === "DIV") {
@@ -60,6 +66,7 @@ function input(str) {
 }
 
 function del() {
+   
     for (i = len - 1; i >= 0; i--) {
         if (letter[i].nodeName === "DIV") {
             if (letter[i].textContent !== "") {
@@ -72,7 +79,6 @@ function del() {
     }
     if (count != 5) {
         enter.disabled = true
-
     }
 }
 
@@ -90,17 +96,20 @@ function getAnswer() {
         data: {
             date: newdate
         },
+        
         success: function (result) {
             WORDLE_ANSWER = result.solution
 
+
         },
+        
         error: function (result) {
             console.log("error with ajax")
         }
     });
+    
 }
 getAnswer()
-
 function changeColor(str, color, bool) {
     for (i = 0; i < len; i++) {
         if (letter[i].nodeName === "DIV") {
@@ -133,7 +142,7 @@ function doStuff() {
             changeColor(finalStr[index].toUpperCase(), "grey", false)
         }
     } 
-}
+    } 
 
 function final_answer() {
     let pass = true
@@ -166,8 +175,27 @@ function final_answer() {
             }
         }
 
-        $('.modal-body').html("You won!!");
+        $('.modal-title').html("You won!!");
+        $('.modal-body').html(`Come back Tomorrow<br>Answer: ${WORDLE_ANSWER}`);
         $('#staticBackdrop').modal('show');
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+        fetch('/cookie') // Replace with your actual API endpoint
+            .then(response => {
+                if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle the data from the server
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Fetch error:', error);
+            });
     }
     else if (pass === true) {
         //if user has 0 attempts remaing
@@ -176,8 +204,27 @@ function final_answer() {
             changeRow(rowcount)
             document.body.style.pointerEvents = "none";
             document.removeEventListener('keydown', keyInputEventListener)
-            $('.modal-body').html(`Better Luck Next Time<br>Answer: ${WORDLE_ANSWER}`);
+            $('.modal-title').html(`Better Luck Next Time`);
+            $('.modal-body').html(`Come back Tomorrow<br>Answer: ${WORDLE_ANSWER}`);
             $('#staticBackdrop').modal('show');
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+            fetch('/cookie') // Replace with your actual API endpoint
+            .then(response => {
+                if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle the data from the server
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Fetch error:', error);
+            });
         }
         else {
             //still going
@@ -186,6 +233,7 @@ function final_answer() {
             changeRow(rowcount)
         }
     }
+
 
     return false
 }

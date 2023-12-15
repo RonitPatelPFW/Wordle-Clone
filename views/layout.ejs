@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,29 +19,40 @@
         <div class="navbar-header">
             <a href="/" class="navbar-brand title">Wordle Clone Game</a>
         </div>
-        <ul class="navbar-nav mr-auto">
-            <div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Difficulty
-                </button>
-                <form class="dropdown-menu" action="/" method="post">
-                    <button type="submit" class="dropdown-item" value='easy' name="selection">Easy (6 attempts)</button>
-                    <button type="submit" class="dropdown-item" value='medium' name="selection">Medium (4
-                        attempts)</button>
-                    <button type="submit" class="dropdown-item" value='hard' name="selection">Hard (2 attempts)</button>
-                </form>
-            </div>
-        </ul>
         <span class="navbar-brand copy">Copyright &copy; Ronit Patel (Fall 2023)</span>
     </div>
 </nav>
 <!-- main -->
 <main class="site-main">
     <div class="container">
-        <%- body %>
+        <body>
+            <% if (user===true) { %>
+                <h1 class="font-weight-bold">You have already attempted Wordle! <br>Come Back Tomorrow</h1>
+                <div class="image">
+                    <img src="images/image.jpeg" alt="meme">
+                </div>
+                <% } else { %>
+                    <h1 class="font-weight-bold">Welcome to Wordle! Start your attempt.</h1>
+                    <ul class="navbar-nav mr-auto">
+                        <div class="dropdown">
+                            <h1><%= mode %></h1>
+                            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Difficulty
+                            </button>
+                            <form class="dropdown-menu" action="/" method="post">
+                                <button type="submit" class="dropdown-item" value='easy' name="selection">Easy (6 attempts)</button>
+                                <button type="submit" class="dropdown-item" value='medium' name="selection">Medium (4 attempts)</button>
+                                <button type="submit" class="dropdown-item" value='hard' name="selection">Hard (2 attempts)</button>
+                            </form>
+                        </div>
+                    </ul>
+                    <%- body %> 
+                <% } %>
+        </body>
     </div>
 </main>
 <script src="js/main.js"></script>
+
 
 </html>
