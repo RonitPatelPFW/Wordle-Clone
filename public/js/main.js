@@ -210,6 +210,21 @@ function final_answer() {
             if ( window.history.replaceState ) {
                 window.history.replaceState( null, null, window.location.href );
             }
+            fetch('/cookie') // Replace with your actual API endpoint
+            .then(response => {
+                if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle the data from the server
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Fetch error:', error);
+            });
         }
         else {
             //still going
