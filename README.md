@@ -61,12 +61,19 @@ Welcome to the Wordle Clone! This is a simple word-guessing game inspired by the
 3. **Play the Game:**
    - Choose your difficulty level and start guessing!
 
+### Word Source
+
+The hidden word in this Wordle Clone is dynamically fetched from the official New York Times Wordle site via a JSON file. Unlike using a static list, I dynamically retrieve the single Wordle word available for the day at the time of playing. This ensures a unique and fresh word for each playthrough.
+
+The game fetches the word from the New York Times Wordle site to maintain freshness and unpredictability. This approach adds an extra layer of challenge and fun to the classic Wordle game, keeping players on their toes with each daily playthrough.
+
 ## Technologies Used
 
 - HTML
 - CSS
 - JavaScript
 - Express/Node.js
+
 
 ## Acknowledgments
 
