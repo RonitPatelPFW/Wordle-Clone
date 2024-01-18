@@ -88,6 +88,16 @@ function getAnswer() {
     let month = dateObj.getMonth() + 1 //months from 1-12
     let day = dateObj.getDate();
     let year = dateObj.getFullYear();
+    
+    if(month < 10) {
+        month = "0" + month 
+    }
+
+    if(day < 10) {
+        day = "0" + day
+    }
+
+
     newdate = year + "-" + month + "-" + day;
 
     $.ajax({
@@ -146,22 +156,6 @@ function doStuff() {
 
 function final_answer() {
     let pass = true
-    //  // Create an object to store character counts
-    //  const charCounts = {};
-
-    //  // Iterate through each character in the string
-    //  for (let char of finalStr) {
-    //      // Increment the count for the current character
-    //      charCounts[char] = (charCounts[char] || 0) + 1;
-    //  }
-    //    // Output the character counts
-    //  for (let char in charCounts) {
-    //      if(charCounts[char] > 1) {
-    //          $('.modal-body').html(`Please enter a valid word`);
-    //          $('#staticBackdrop').modal('show');
-    //          pass = false
-    //     }
-    // }
 
     //if user got answer
     if ((pass === true) && (finalStr === WORDLE_ANSWER)) {

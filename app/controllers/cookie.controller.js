@@ -8,6 +8,13 @@ function generateUniqueUserId() {
     let month = dateObj.getMonth() + 1 //months from 1-12
     let day = dateObj.getDate();
     let year = dateObj.getFullYear();
+    if(month < 10) {
+        month = "0" + month 
+    }
+
+    if(day < 10) {
+        day = "0" + day
+    }
     const uid = year + "-" + month + "-" + day;
     return uid
 }

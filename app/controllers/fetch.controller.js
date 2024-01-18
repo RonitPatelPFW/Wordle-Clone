@@ -1,11 +1,11 @@
 module.exports = {
     GetData: GetData,
     SetDifficulty: SetDifficulty,
-    SetDifficulty: SetDifficulty
 }
 
 async function GetData(req, res) {
     try {
+        console.log(req.query.date)
         const response = await fetch(`https://www.nytimes.com/svc/wordle/v2/${req.query.date}.json`);
         const data = await response.json();
         res.json(data);
