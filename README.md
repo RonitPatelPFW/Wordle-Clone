@@ -1,6 +1,7 @@
 # Wordle Clone
 
-Welcome to the Wordle Clone! This is a simple word-guessing game inspired by the classic Wordle game. In this clone, you'll be challenged to guess a hidden word within a limited number of attempts. The game features a difficulty setting, allowing you to choose between easy, medium, and hard levels with varying attempts.
+Welcome to the Wordle Clone! This is a simple word-guessing game inspired by the classic Wordle game. In this clone, you'll be challenged to guess a hidden word within a limited number of attempts. The game features a difficulty setting, allowing you to choose between easy, medium, and hard levels with varying attempts. Also like the original you can only play once a day
+
 
 ## How to Play
 
@@ -30,10 +31,10 @@ Welcome to the Wordle Clone! This is a simple word-guessing game inspired by the
 
 ### Installation
 
-1. Clone the repository:
+1. Clone the repository in desired directory:
 
    ```bash
-   https://github.com/RonitPatelPFW/Wordle-Clone.git
+   git clone https://github.com/RonitPatelPFW/Wordle-Clone.git
    ```
 
 2. Navigate to the project directory:
@@ -65,14 +66,13 @@ Welcome to the Wordle Clone! This is a simple word-guessing game inspired by the
 
 The hidden word in this Wordle Clone is dynamically fetched from the official New York Times Wordle site via a JSON file. Unlike using a static list, I dynamically retrieve the single Wordle word available for the day at the time of playing. This ensures a unique and fresh word for each playthrough.
 
-The game fetches the word from the New York Times Wordle site to maintain freshness and unpredictability. This approach adds an extra layer of challenge and fun to the classic Wordle game, keeping players on their toes with each daily playthrough.
-
 ## Technologies Used
 
 - HTML
 - CSS
+   - Bootstrap
 - JavaScript
-- Express/Node.js
+   - Express
 
 
 ## Acknowledgments
@@ -80,3 +80,6 @@ The game fetches the word from the New York Times Wordle site to maintain freshn
 This Wordle Clone was created with inspiration from the classic Wordle game. 
 
 Have fun playing the Wordle Clone! 🎉
+
+## Dev Notes:
+There are still couple issues to be fixed but its not significant where I am willing to bother and fix it lol
