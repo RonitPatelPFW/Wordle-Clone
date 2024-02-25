@@ -1,4 +1,4 @@
-# This workflow will deploy source code on Cloud Run when a commit is pushed to the "main" branch
+# This workflow will deploy source code on Cloud Run when a commit is pushed to the $default-branch branch
 #
 # Overview:
 #
@@ -25,7 +25,7 @@
 #      roles/cloudbuild.builds.editor
 #
 #    Cloud Storage
-#      roles/storage.objectAdmin
+#      roles/storage.admin
 #
 #    Artifact Registry
 #      roles/artifactregistry.admin     (project or repository level)
@@ -48,13 +48,13 @@ name: Deploy to Cloud Run from Source
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - $default-branch
 
 env:
   PROJECT_ID: cs372-web-app-dev-403501 # TODO: update Google Cloud project id
   SERVICE: wordle-clone	# TODO: update Cloud Run service name
   REGION: us-central1 # TODO: update Cloud Run service region
-  WIF_SERVICE_ACCOUNT: 342022066343@cloudbuild.gserviceaccount.com
 jobs:
   deploy:
     # Add 'id-token' with the intended permissions for workload identity federation
@@ -67,14 +67,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Authenticate to Google Cloud
+      - name: Google Auth
         id: auth
-        uses: google-github-actions/auth@v2.1.1
+        uses: 'google-github-actions/auth@v0'
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}' # e.g. - projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}' # e.g. - my-service-account@my-project.iam.gserviceaccount.com
-          
-            
+
       # NOTE: Alternative option - authentication via credentials json
       # - name: Google Auth
       #   id: auth
