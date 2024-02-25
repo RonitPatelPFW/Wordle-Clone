@@ -71,7 +71,7 @@ jobs:
         id: auth
         uses: 'google-github-actions/auth@v2.1.1'
         with:
-          workload_identity_provider: 'projects/342022066343/locations/global/workloadIdentityPools/github-cloud-run/subject/github'
+          workload_identity_provider: 'projects/342022066343/locations/global/workloadIdentityPools/github-cloud-run/providers/github'
           # e.g. - projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider
           service_account: 'cloud-run-account@cs372-web-app-dev-403501.iam.gserviceaccount.com' # e.g. - my-service-account@my-project.iam.gserviceaccount.com
 
