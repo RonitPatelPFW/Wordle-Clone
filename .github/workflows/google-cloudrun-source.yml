@@ -55,6 +55,7 @@ env:
   PROJECT_ID: cs372-web-app-dev-403501 # TODO: update Google Cloud project id
   SERVICE: wordle-clone	# TODO: update Cloud Run service name
   REGION: us-central1 # TODO: update Cloud Run service region
+  WIF_PROVIDER: principal://iam.googleapis.com/projects/342022066343/locations/global/workloadIdentityPools/github-actions-cloud-run/subject/SUBJECT_ATTRIBUTE_VALUE
 jobs:
   deploy:
     # Add 'id-token' with the intended permissions for workload identity federation
