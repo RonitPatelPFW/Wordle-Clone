@@ -4,7 +4,7 @@
   "description": "Wordle Game",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "mocha ./unit_testing --recursive --timeout 15000 --exit"
   },
   "repository": {
