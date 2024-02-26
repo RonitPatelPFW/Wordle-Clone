@@ -29,38 +29,6 @@ Welcome to the Wordle Clone! This is a simple word-guessing game inspired by the
    - If you exhaust all attempts without guessing the word, the game ends.
    - The hidden word will be revealed.
 
-### Installation
-
-1. Clone the repository in desired directory:
-
-   ```bash
-   git clone https://github.com/RonitPatelPFW/Wordle-Clone.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd Wordle-Clone
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-### Usage
-
-1. Start the game:
-
-   ```bash
-   npm start
-   ```
-
-2. The app should automatically open in your default browser.
-
-3. **Play the Game:**
-   - Choose your difficulty level and start guessing!
 
 ### Word Source
 
@@ -73,7 +41,6 @@ The hidden word in this Wordle Clone is dynamically fetched from the official Ne
    - Bootstrap
 - JavaScript
    - Express
-
 
 ## Acknowledgments
 
