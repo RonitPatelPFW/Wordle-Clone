@@ -3,7 +3,7 @@
 Welcome to the Wordle Clone! This is a simple word-guessing game inspired by the classic Wordle game. In this clone, you'll be challenged to guess a hidden word within a limited number of attempts. The game features a difficulty setting, allowing you to choose between easy, medium, and hard levels with varying attempts. Also like the original you can only play once a day
 
 
-## How to Play
+## Gameplay
 
 1. **Objective:**
    - Your goal is to guess the hidden word.
@@ -44,9 +44,5 @@ The hidden word in this Wordle Clone is dynamically fetched from the official Ne
 
 ## Acknowledgments
 
-This Wordle Clone was created with inspiration from the classic Wordle game. 
+This Wordle Clone was created with inspiration from the classic Wordle game.
 
-Have fun playing the Wordle Clone! 🎉
-
-## Dev Notes:
-There are still couple issues to be fixed but its not significant where I am willing to bother and fix it lol
