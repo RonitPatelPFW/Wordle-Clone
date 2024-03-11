@@ -83,7 +83,7 @@ function del() {
 }
 
 
-function getAnswer() {
+(() => {
     let dateObj = new Date();
     let month = dateObj.getMonth() + 1 //months from 1-12
     let day = dateObj.getDate();
@@ -118,7 +118,7 @@ function getAnswer() {
         }
     });
     
-}
+})();
 getAnswer()
 function changeColor(str, color, bool) {
     for (i = 0; i < len; i++) {
