@@ -32,7 +32,6 @@ function keyInputEventListener(event) {
             del()
         }
     }
-    // document.addEventListener('keydown', keyInputEventListener)
 }
 
 document.addEventListener('keydown', keyInputEventListener)
