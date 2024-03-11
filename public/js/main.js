@@ -119,7 +119,7 @@ function del() {
     });
     
 })();
-getAnswer()
+
 function changeColor(str, color, bool) {
     for (i = 0; i < len; i++) {
         if (letter[i].nodeName === "DIV") {
