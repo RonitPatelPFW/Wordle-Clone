@@ -154,6 +154,24 @@ function doStuff() {
     } 
     } 
 
+function fetchCookie() {
+ fetch('/cookie')
+            .then(response => {
+                if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle the data from the server
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Fetch error:', error);
+            });
+}
+
 function final_answer() {
     let pass = true
 
@@ -175,21 +193,7 @@ function final_answer() {
         if ( window.history.replaceState ) {
             window.history.replaceState( null, null, window.location.href );
         }
-        fetch('/cookie') // Replace with your actual API endpoint
-            .then(response => {
-                if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Handle the data from the server
-                console.log(data);
-            })
-            .catch(error => {
-                // Handle errors
-                console.error('Fetch error:', error);
-            });
+      fetchCookie()
     }
     else if (pass === true) {
         //if user has 0 attempts remaing
@@ -204,21 +208,8 @@ function final_answer() {
             if ( window.history.replaceState ) {
                 window.history.replaceState( null, null, window.location.href );
             }
-            fetch('/cookie') // Replace with your actual API endpoint
-            .then(response => {
-                if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Handle the data from the server
-                console.log(data);
-            })
-            .catch(error => {
-                // Handle errors
-                console.error('Fetch error:', error);
-            });
+           fetchCookie()
+        
         }
         else {
             //still going
