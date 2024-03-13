@@ -7,7 +7,7 @@ If you encounter any issues or have suggestions for improvement, please feel fre
 1. Clone the repository in desired directory:
    ```bash
    git clone https://github.com/RonitPatelPFW/Wordle-Clone.git
-2. Navigate to the project directory::
+2. Navigate to the project directory:
    ```bash
    cd Wordle-Clone
 3. Install dependencies:
